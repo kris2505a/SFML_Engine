@@ -98,11 +98,12 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Headers\core.h" />
-    <ClInclude Include="src\Headers\physicsEngine.h" />
+    <ClInclude Include="src\PhysicsEngine.h" />
+    <ClInclude Include="src\PhysicsEngine\Headers\core.h" />
+    <ClInclude Include="src\PhysicsEngine\Headers\RigidBodies.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\physicsEngine.cpp" />
+    <ClCompile Include="src\PhysicsEngine\RigidBodies.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

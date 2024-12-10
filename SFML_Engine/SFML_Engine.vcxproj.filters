@@ -15,15 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Headers\core.h">
+    <ClInclude Include="src\PhysicsEngine\Headers\core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Headers\physicsEngine.h">
+    <ClInclude Include="src\PhysicsEngine\Headers\RigidBodies.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PhysicsEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\physicsEngine.cpp">
+    <ClCompile Include="src\PhysicsEngine\RigidBodies.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

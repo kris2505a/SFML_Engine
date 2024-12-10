@@ -1,6 +1,8 @@
-#include "Headers/physicsEngine.h"
+#include "Headers/RigidBodies.h"
 
 namespace PhysicsEngine {
+
+    //Rectangle Start
 
     Rectangle::Rectangle(sf::Vector2f pos, float w, float h)
         : Object{ pos }, width{ w }, height{ h } {
@@ -18,14 +20,29 @@ namespace PhysicsEngine {
     }
 
 
+    float Rectangle::getArea() {
+        return this->width * this->height;
+    }
+
     void Rectangle::draw(sf::RenderWindow* window) {
         window->draw(this->rectangle);
     }
 
-   
-    Circle::Circle(sf::Vector2f pos, float rad) 
+    void Rectangle::update(float deltaTime) {
+
+    }
+    //Rectangle end
+}
+
+
+
+namespace PhysicsEngine {
+
+    //Circle start
+
+    Circle::Circle(sf::Vector2f pos, float rad)
         : Object{ pos }, radius{ rad } {
-    
+
         this->circle.setPosition(this->position);
         this->circle.setRadius(this->radius);
     }
@@ -35,4 +52,6 @@ namespace PhysicsEngine {
         // logic
         return false;
     }
+
+    //Circle end
 }

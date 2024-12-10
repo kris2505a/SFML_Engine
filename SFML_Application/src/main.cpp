@@ -1,5 +1,5 @@
-#include "Headers/physicsEngine.h"
-#include <SFML/Graphics.hpp>
+#include "PhysicsEngine.h"
+
 
 int main() {
 	sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "Kriss", sf::Style::Close);
