@@ -19,9 +19,12 @@ namespace PhysicsEngine {
 		float inertia{ 0.0f };
 		float coeffOfFriction { 0.0f };
 		float coeffOfRestitution { 0.0f };
+		float gravityConst { 981.0f };
+		sf::Vector2f velocity{ 0, 0 };
 		bool gravity { false };
-		//sf::Vector2f force(0, 0);
 		
+		//private Functions
+		virtual void updatePosition() = 0;
 
 	public:
 		
@@ -41,6 +44,7 @@ namespace PhysicsEngine {
 		inline void setGravity(bool toStatus) { this->gravity = toStatus; }
 		inline void setMass(float targetMass) { this->mass = targetMass; }
 
+
 		//Collision
 		virtual bool isCollided(const Object&) = 0;
 
@@ -58,9 +62,11 @@ namespace PhysicsEngine {
 	private:
 		float width, height;
 		sf::RectangleShape rectangle;
+
+		virtual void updatePosition() override;
 	
 	public:
-		Rectangle(sf::Vector2f, float, float);
+		Rectangle(sf::Vector2f, float, float, bool);
 		virtual bool isCollided(const Object&) override;
 		virtual float getArea() override;
 		virtual void draw(sf::RenderWindow*) override;

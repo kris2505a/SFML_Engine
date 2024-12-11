@@ -4,12 +4,13 @@ namespace PhysicsEngine {
 
     //Rectangle Start
 
-    Rectangle::Rectangle(sf::Vector2f pos, float w, float h)
+    Rectangle::Rectangle(sf::Vector2f pos, float w, float h, bool hasGravity)
         : Object{ pos }, width{ w }, height{ h } {
         
         this->rectangle.setPosition(this->position);
         this->rectangle.setSize(sf::Vector2f(this->width, this->height));
         this->rectangle.setFillColor(sf::Color::White);
+        this->gravity = hasGravity;
 
     }
 
@@ -28,8 +29,18 @@ namespace PhysicsEngine {
         window->draw(this->rectangle);
     }
 
-    void Rectangle::update(float deltaTime) {
+    void Rectangle::update(float deltaTime) { 
+        if (this->gravity)
+            this->position.y = this->position.y + this->gravityConst * deltaTime;
+        this->position.y += this->velocity.y * deltaTime;        
+        this->updatePosition();
 
+        if (this->position.y >= 1080)
+            this->gravity = false;
+    }
+
+    void Rectangle::updatePosition() {
+        this->rectangle.setPosition(this->position);
     }
     //Rectangle end
 }
