@@ -51,17 +51,40 @@ namespace PhysicsEngine {
 
     //Circle start
 
-    Circle::Circle(sf::Vector2f pos, float rad)
+    Circle::Circle(sf::Vector2f pos, float rad, bool hasGravity)
         : Object{ pos }, radius{ rad } {
 
         this->circle.setPosition(this->position);
         this->circle.setRadius(this->radius);
+        this->gravity = hasGravity;
     }
 
 
     bool Circle::isCollided(const Object& otherObject) {
         // logic
         return false;
+    }
+
+    void Circle::draw(sf::RenderWindow* window) {
+        window->draw(this->circle);
+    }
+
+    void Circle::update(float deltaTime) {
+        if (this->gravity)
+            this->position.y = this->position.y + this->gravityConst * deltaTime;
+        this->position.y += this->velocity.y * deltaTime;
+        this->updatePosition();
+
+        if (this->position.y >= 1080)
+            this->gravity = false;
+    }
+
+    void Circle::updatePosition() {
+        this->circle.setPosition(this->position);
+    }
+
+    float Circle::getArea() {
+        return PI * this->radius * this->radius;
     }
 
     //Circle end

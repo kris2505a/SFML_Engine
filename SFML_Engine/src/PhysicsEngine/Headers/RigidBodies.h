@@ -82,9 +82,13 @@ namespace PhysicsEngine {
 	private:
 		float radius;
 		sf::CircleShape circle;
+		virtual void updatePosition() override;
 	public:
-		Circle(sf::Vector2f pos, float rad);
+		Circle(sf::Vector2f, float, bool);
 		virtual bool isCollided(const Object& otherObject) override;
+		virtual void draw(sf::RenderWindow*) override;
+		virtual void update(float) override;
+		virtual float getArea() override;
 	};
 }
 
